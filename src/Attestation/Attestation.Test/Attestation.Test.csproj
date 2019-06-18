@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>KeyVault</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>Microsoft.Azure.Commands.Attestation.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Test</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Resources\" />
+    <Folder Include="SessionRecords\" />
+  </ItemGroup>
+
+</Project>
+
