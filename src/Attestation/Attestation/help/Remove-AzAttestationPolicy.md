@@ -1,61 +1,48 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version:https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestationpolicy
 schema: 2.0.0
 ---
 
-# Remove-AzAttestation
+# Remove-AzAttestationPolicy
 
 ## SYNOPSIS
-Deletes an attestation.
+Removes the policy from a tenant in Azure Attestationn.}
 
 ## SYNTAX
 
-### ByAvailableAttestation (Default)
 ```
-Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-AsJob] [-PassThru]
+Remove-AzAttestationPolicy -Name <String> -Tee <String> -AttestationPolicy <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdByAvailableAttestation
-```
-Remove-AzAttestation [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectByAvailableAttestation
-```
-Remove-AzAttestation [-InputObject] <PSAttestation> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The Remove-AzAttestation cmdlet deletes the specified attestation.
+The Remove-AzAttestationPolicy cmdlet removes the user defined attestation policy from a tenant in Azure Attestation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAttestation -Name "example" -ResourceGroupName "rg1" 
+PS C:\> Remove-AzAttestationPolicy -Name "example" -Tee "SgxEnclave" -AttestationPolicy "policyexample"
 ```
 
-Delete Attestation "example" from current Subscription and Resource Group "rg1".
+Deletes the user defined policy "policyexample" for tennat "example" in Tee "SgxEnclave".
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
+### -AttestationPolicy
+Specifies the JSON Web Token describing the policy document to remove.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -74,33 +61,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Attestation object to be deleted.
-
-```yaml
-Type: PSAttestation
-Parameter Sets: InputObjectByAvailableAttestation
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-Specifies the name of the attestation to remove.
+Specifies a name of the tenant.
+This cmdlet removes the attestation policy for the tenant that this parameter specifies.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableAttestation
-Aliases:
+Parameter Sets: (All)
+Aliases: InstanceName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -120,31 +93,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of resource group for Azure attestation to remove.
+### -Tee
+Specifies a type of Trusted Execution Environment.
+We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and AzureGuest.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableAttestation
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Attestation Resource Id.
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdByAvailableAttestation
-Aliases:
-
-Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -187,8 +146,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Commands.Attestation.Models.PSAttestation
 
 ## OUTPUTS
 

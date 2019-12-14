@@ -25,6 +25,7 @@ Add-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-Servi
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>]
+ [[-AzureAttestationServiceEndpointSuffix] <String>] [-AzureAttestationServiceEndpointResourceId <String>]
  [-AzureAnalysisServicesEndpointResourceId <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -36,6 +37,7 @@ Add-AzEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] 
  [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
  [-AzureAnalysisServicesEndpointSuffix <String>] [-AzureAnalysisServicesEndpointResourceId <String>]
+ [-AzureAttestationServiceEndpointSuffix <String>] [-AzureAttestationServiceEndpointResourceId <String>]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -87,6 +89,8 @@ AzureKeyVaultServiceEndpointResourceId            :
 AzureOperationalInsightsEndpointResourceId        :
 AzureOperationalInsightsEndpoint                  :
 AzureAnalysisServicesEndpointSuffix               :
+AzureAttestationServiceEndpointResourceId        :
+AzureAttestationServiceEndpointSuffix 
 VersionProfiles                                   : {}
 ExtendedProperties                                : {}
 BatchEndpointResourceId                           :

@@ -160,6 +160,14 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
         public string AzureOperationalInsightsEndpoint { get; set; }
 
+        [Parameter(Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Attestation service that is the recipient of the requested token.")]
+        public string AzureAttestationServiceEndpointResourceId { get; set; }
+
+        [Parameter(Position = 24, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns suffix of Azure Attestation service.")]
+        public string AzureAttestationServiceEndpointSuffix { get; set; }
+
         [Parameter(Mandatory = false,
           HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
         public string AzureAnalysisServicesEndpointSuffix { get; set; }
@@ -317,6 +325,10 @@ namespace Microsoft.Azure.Commands.Profile
                                    nameof(AzureAnalysisServicesEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId,
                                    nameof(AzureAnalysisServicesEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix,
+                                    nameof(AzureAttestationServiceEndpointSuffix));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId,
+                                    nameof(AzureAttestationServiceEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
