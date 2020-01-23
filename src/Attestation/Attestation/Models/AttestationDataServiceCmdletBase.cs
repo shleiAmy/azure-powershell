@@ -12,16 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Attestation.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
-    public class AttestationCreationParameters
+    public class AttestationDataServiceCmdletBase : AzureRMCmdlet
     {
-        public string ProviderName { get; set; }
-        public string ResourceGroupName { get; set; }
-        public string AttestationPolicyName { get; set; }
+        private AttestationDataServiceClient attestationDataClient;
 
-        public JSONWebKeySet PolicySigningCertificates { get; set; }
+        public AttestationDataServiceClient AttestationDataClient
+        {
+            get
+            {
+                if (attestationDataClient == null)
+                {
+                    attestationDataClient = new AttestationDataServiceClient(AzureSession.Instance.AuthenticationFactory, DefaultContext);
+                }
+                return attestationDataClient;
+            }
+            set { attestationDataClient = value; }
+        }
     }
 }

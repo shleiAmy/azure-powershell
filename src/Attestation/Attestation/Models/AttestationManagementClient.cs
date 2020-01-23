@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             }
             AttestationServiceCreationParams _creationParams = new AttestationServiceCreationParams();
-            if (!string.IsNullOrEmpty(parameters.AttestationPolicy))
+            if (!string.IsNullOrEmpty(parameters.AttestationPolicyName))
             {
-                _creationParams.AttestationPolicy = parameters.AttestationPolicy;
+                _creationParams.AttestationPolicy = parameters.AttestationPolicyName;
             }
             if (parameters.PolicySigningCertificates != null)
             {

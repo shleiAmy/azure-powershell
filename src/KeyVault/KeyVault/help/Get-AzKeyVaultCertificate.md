@@ -143,7 +143,7 @@ Expires            : 11/24/2018 6:09:44 PM
 NotBefore          : 5/24/2018 5:59:44 PM
 Created            : 5/24/2018 6:09:44 PM
 Updated            : 5/24/2018 6:09:44 PM
-Tags               :
+Tags               :C:\myWorkingDirectory\azure-powershell\src\KeyVault\KeyVault.Test\UnitTests\SetKeyVaultSecretAttributeTests.cs
 VaultName          : contoso
 Name               : test2
 Version            :

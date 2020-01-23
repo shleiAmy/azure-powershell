@@ -13,7 +13,7 @@ Creates an attestation
 ## SYNTAX
 
 ```
-New-AzAttestation -Name <String> -ResourceGroupName <String> [-AttestationPolicy <String>]
+New-AzAttestation -Name <String> -ResourceGroupName <String> [-AttestationPolicyName <String>]
  [-PolicySigningCertificateFile <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ The New-AzAttestation cmdlet creates an attestation in the specified resource gr
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAttestation -Name example -ResourceGroupName rg1 
+PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" 
 Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
 Name                : example
 Type                : Microsoft.Attestation/attestationProviders
@@ -37,7 +37,7 @@ SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 
 ### Example 2
 ```powershell
-PS C:\> New-AzAttestation -Name example -ResourceGroupName rg1 -AttestationPolicy SgxDisableDebugMode
+PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" -AttestationPolicyName "SgxDisableDebugMode"
 Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
 Name                : example
 Type                : Microsoft.Attestation/attestationProviders
@@ -48,7 +48,7 @@ SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
 ### Example 3
 ```powershell
-PS C:\> New-AzAttestation -Name example -ResourceGroupName rg1 -PolicySigningCertificateFile c:\test\certs.pem
+PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" -PolicySigningCertificateFile "c:\test\certs.pem"
 Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
 Name                : example
 Type                : Microsoft.Attestation/attestationProviders
@@ -60,8 +60,8 @@ SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 
 ## PARAMETERS
 
-### -AttestationPolicy
-Specifies the attestation policy passed in which to create the attestation.
+### -AttestationPolicyName
+Specifies the attestation policy name passed in which to create the attestation.
 
 ```yaml
 Type: String

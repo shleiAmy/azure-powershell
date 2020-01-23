@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Attestation
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
-                "Specifies the attestation policy passed in which to create the attestation."
+                "Specifies the attestation policy name passed in which to create the attestation."
         )]
-        public string AttestationPolicy { get; set; }
+        public string AttestationPolicyName { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Attestation
                 {
                     ProviderName = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
-                    AttestationPolicy = this.AttestationPolicy,
+                    AttestationPolicyName = this.AttestationPolicyName,
                     PolicySigningCertificates = jsonWebKeySet
                 });
                 this.WriteObject(newAttestation);
