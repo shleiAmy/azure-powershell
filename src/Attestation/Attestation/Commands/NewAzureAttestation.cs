@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Attestation
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
-                "Specifies the attestation policy passed in which to create the attestation."
+                "Specifies the policy template passed in which to create the attestation. We support four types of policy template: SgxDisableDebugMode, SgxAllowDebugMode, SgxRequireSqlServer and SgxRequireSqlServerBogusMrSigner."
         )]
-        public string AttestationPolicy { get; set; }
+        public string PolicyTemplate { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Attestation
                 {
                     ProviderName = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
-                    AttestationPolicy = this.AttestationPolicy,
+                    AttestationPolicy = this.PolicyTemplate,
                     PolicySigningCertificates = jsonWebKeySet
                 });
                 this.WriteObject(newAttestation);
