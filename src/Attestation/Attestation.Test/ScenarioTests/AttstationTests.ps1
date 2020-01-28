@@ -21,12 +21,12 @@ function Test-CreateAttestation
 {
 	$unknownRGName = getAssetName
 	$attestationName = getAssetName
-    $attestationPolicyName = "SgxDisableDebugMode"
+    $policyTemplate = "SgxDisableDebugMode"
 
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicyName $attestationPolicyName
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $policyTemplate
 		
 		Assert-NotNull attestationCreated
 		Assert-AreEqual $attestationName $attestationCreated.Name
@@ -35,10 +35,10 @@ function Test-CreateAttestation
 		Assert-NotNull attestationCreated.Status
 		
 		# Test throws for existing attestation
-		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicyName $attestationPolicyName}
+		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $policyTemplate}
 
 		# Test throws for resourcegroup nonexistent
-		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -AttestationPolicyName $attestationPolicyName}
+		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -PolicyTemplate $policyTemplate}
 	}
 
 	finally
@@ -51,7 +51,6 @@ function Test-CreateAttestationWithPolicySigningCertificate
 {
 	$unknownRGName = getAssetName
 	$attestationName = getAssetName
-	$attestationPolicyName = "SgxDisableDebugMode"
 	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
 	$PemDir = Join-Path $TestOutputRoot "PemFiles"
         $file= Join-Path $PemDir "policySigningCerts.pem"
@@ -68,10 +67,10 @@ function Test-CreateAttestationWithPolicySigningCertificate
 		Assert-NotNull attestationCreated.Status
 		
 		# Test throws for existing attestation
-		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicyName $attestationPolicyName}
+		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $policyTemplate}
 
 		# Test throws for resourcegroup nonexistent
-		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -AttestationPolicyName $attestationPolicyName}
+		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -PolicyTemplate $policyTemplate}
 	}
 
 	finally
@@ -88,11 +87,11 @@ Test Get-AzAttestation
 function Test-GetAttestation
 {	
 	$attestationName = getAssetName
-	$attestationPolicyName = "SgxDisableDebugMode"
+	$policyTemplate = "SgxDisableDebugMode"
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicyName $attestationPolicyName
+		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $policyTemplate
 
 		$got = Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName
 		Assert-NotNull got
@@ -113,11 +112,11 @@ Test Remove-AzAttestation
 function Test-DeleteAttestationByName
 {
 	$attestationName = getAssetName
-	$attestationPolicyName = "SgxDisableDebugMode"
+	$policyTemplate = "SgxDisableDebugMode"
 	try
 	{
 		$rgName = Create-ResourceGroup
-		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicyName $attestationPolicyName
+		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $policyTemplate
 		Remove-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName 
 
 		Assert-Throws {Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName}

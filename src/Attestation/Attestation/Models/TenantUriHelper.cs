@@ -27,34 +27,12 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             this.TenantDnsSuffix = tenantDnsSuffix;
         }
 
-        //public string GetTenantName(string tenantAddress)
-        //{
-        //    Uri tenantUri = CreateAndValidateTenantUri(tenantAddress);
-        //    return tenantUri.Host.Split('.').First();
-        //}
-
         public String CreateTenantAddress(string tenantName)
         {
             return CreateTenantUri(tenantName).ToString();
         }
 
         public string TenantDnsSuffix { get; private set; }
-
-        //private Uri CreateAndValidateTenantUri(string tenantAddress)
-        //{
-        //    if (string.IsNullOrEmpty(tenantAddress))
-        //        throw new ArgumentNullException("tenantAddress");
-
-        //    Uri tenantUri;
-        //    if (!Uri.TryCreate(tenantAddress, UriKind.Absolute, out tenantUri))
-        //        throw new ArgumentException(string.Format("InvalidTennatUri", tenantAddress, this.TenantDnsSuffix));
-
-        //    if (tenantUri.HostNameType != UriHostNameType.Dns ||
-        //        !tenantUri.Host.EndsWith(this.TenantDnsSuffix, StringComparison.OrdinalIgnoreCase))
-        //        throw new ArgumentException(string.Format("InvalidTennatUri", tenantAddress, this.TenantDnsSuffix));
-
-        //    return tenantUri;
-        //}
 
         private Uri CreateTenantUri(string tenantName)
         {

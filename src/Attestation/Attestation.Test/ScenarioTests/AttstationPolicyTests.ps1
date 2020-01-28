@@ -28,7 +28,7 @@ function Test-SetAttestationPolicy
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $attestationPolicy
 		
 		Assert-NotNull attestationCreated
 		Assert-AreEqual $attestationName $attestationCreated.Name
@@ -61,7 +61,7 @@ function Test-GetAttestationPolicy
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $attestationPolicy
 		
 		Assert-NotNull attestationCreated
 		Assert-AreEqual $attestationName $attestationCreated.Name
@@ -95,7 +95,7 @@ function Test-DeleteAttestationByName
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicyTemplate $attestationPolicy
 		
 		Assert-NotNull attestationCreated
 		Assert-AreEqual $attestationName $attestationCreated.Name
